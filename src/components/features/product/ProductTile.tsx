@@ -26,6 +26,11 @@ export const ProductTile = ({
             <FormatCurrency value={price} />
           </Text>
         )}
+         {price && (
+          <Text {...inspectorProps({ fieldId: 'rating' })} mt={3} fontWeight="500">
+            <FormatCurrency value={price} />
+          </Text>
+        )}
       </Box>
     </div>
   ) : null;
