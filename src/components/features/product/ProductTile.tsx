@@ -9,6 +9,7 @@ import { PageProductFieldsFragment } from '@src/lib/__generated/sdk';
 export const ProductTile = ({
   featuredProductImage,
   price,
+  score,
   slug,
   sys: { id: entryId },
 }: PageProductFieldsFragment) => {
@@ -26,9 +27,9 @@ export const ProductTile = ({
             <FormatCurrency value={price} />
           </Text>
         )}
-         {price && (
-          <Text {...inspectorProps({ fieldId: 'rating' })} mt={3} fontWeight="500">
-            <FormatCurrency value={price} />
+        {score && (
+          <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
+            <FormatCurrency value={score} />
           </Text>
         )}
       </Box>
