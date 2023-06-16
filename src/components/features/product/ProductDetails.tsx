@@ -6,6 +6,9 @@ import { FormatCurrency } from '@src/components/shared/format-currency';
 import { QuantitySelector } from '@src/components/shared/quantity-selector';
 import { PageProductFieldsFragment } from '@src/lib/__generated/sdk';
 
+import ScoreDetails from './ScoreDetails';
+import MyComponent from './MyComponent';
+
 export const ProductDetails = ({
   name,
   price,
@@ -52,7 +55,8 @@ export const ProductDetails = ({
             borderRadius={4}
             px={{ base: 4, lg: 6 }}
             pt={{ base: 6, lg: 6 }}
-            pb={{ base: 8, lg: 14 }}>
+            pb={{ base: 8, lg: 14 }}
+          >
             <Heading {...inspectorProps({ fieldId: 'name' })} as="h1" variant="h3">
               {name}
             </Heading>
@@ -69,6 +73,8 @@ export const ProductDetails = ({
               <QuantitySelector />
             </Box>
           </Box>
+          <ScoreDetails />
+          <MyComponent />
         </GridItem>
       </Grid>
     </Container>

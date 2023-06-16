@@ -1,10 +1,12 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Flex, Text, Image } from '@chakra-ui/react';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import Link from 'next/link';
 
 import { CtfImage } from '@src/components/features/contentful/ctf-image';
 import { FormatCurrency } from '@src/components/shared/format-currency';
 import { PageProductFieldsFragment } from '@src/lib/__generated/sdk';
+
+import ScorePopup from './ScorePopup';
 
 export const ProductTile = ({
   featuredProductImage,
@@ -22,17 +24,22 @@ export const ProductTile = ({
             <CtfImage {...featuredProductImage} />
           </Box>
         )}
+      </Box>
+      <Flex justifyContent="space-between">
         {price && (
           <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
             <FormatCurrency value={price} />
           </Text>
         )}
+        <ScorePopup />
+      </Flex>
+      <div>
         {score && (
-          <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
+          <Text {...inspectorProps({ fieldId: 'score' })} mt={3} fontWeight="500">
             <FormatCurrency value={score} />
           </Text>
         )}
-      </Box>
+      </div>
     </div>
   ) : null;
 };
