@@ -19,7 +19,8 @@ export const Footer = () => {
         <Text>{t('common.description1')}</Text>
         <Text>{t('common.description2')}</Text>
         <Text>
-          Developed as part of <span style={{ color: 'red', fontSize: '16px' }}>MACHATHON</span> by
+          Developed as part of{' '}
+          <span style={{ color: 'red', fontSize: '16px' }}>MACH Hackathon</span> by
           <Link
             marginLeft={1}
             href="https://www.wundermanthompson.com/bangladesh"

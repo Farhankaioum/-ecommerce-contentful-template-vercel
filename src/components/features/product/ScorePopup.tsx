@@ -27,8 +27,8 @@ function ScorePopup() {
 
   return (
     <div>
-      <Button onClick={openPopup}>
-        <Flex justifyContent="space-between" align={'center'}>
+      <Button onClick={openPopup} paddingLeft={0} paddingRight={2}>
+        <Flex justifyContent="space-between" align={'center'} padding={0}>
           <Image
             src="/assets/logo.png"
             alt="Logo Image"

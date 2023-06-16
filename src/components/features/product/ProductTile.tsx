@@ -27,19 +27,24 @@ export const ProductTile = ({
       </Box>
       <Flex justifyContent="space-between">
         {price && (
-          <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
+          <Text
+            {...inspectorProps({ fieldId: 'price' })}
+            mt={1}
+            ml={10}
+            fontWeight="500"
+            fontSize="1.5rem"
+            padding={3.5}
+            borderRadius="6px"
+          >
             <FormatCurrency value={price} />
           </Text>
         )}
-        <ScorePopup />
+        <Box marginRight={12} padding={1.5} borderRadius="6px">
+          <Box marginTop={2}>
+            <ScorePopup />
+          </Box>
+        </Box>
       </Flex>
-      <div>
-        {score && (
-          <Text {...inspectorProps({ fieldId: 'score' })} mt={3} fontWeight="500">
-            <FormatCurrency value={score} />
-          </Text>
-        )}
-      </div>
     </div>
   ) : null;
 };
