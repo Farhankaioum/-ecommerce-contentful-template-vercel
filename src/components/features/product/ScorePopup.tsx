@@ -49,7 +49,7 @@ function ScorePopup() {
     const fetchUser = async () => {
       try {
         const response = await fetch(
-          'https://shenvi.xyz/api/score/getbyid/648eb05c74140dff1cc2227c',
+          'https://shenvi.xyz/api/score/getbyid/648f12c9a5657853a1cd70e5',
         );
         const data = await response.json();
         setData(data);
