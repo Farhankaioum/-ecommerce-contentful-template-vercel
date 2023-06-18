@@ -1256,6 +1256,7 @@ export const BasePageProductFieldsFragmentDoc = gql`
   }
   name
   description
+  shenviRef
   price
   featuredProductImage {
     ...ImageFields
