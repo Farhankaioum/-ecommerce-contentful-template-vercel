@@ -20,7 +20,6 @@ function ScorePopup(shenviRef) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openPopup = () => {
-    console.log('shenviRef ', shenviRef);
     setIsOpen(true);
   };
 
@@ -49,9 +48,7 @@ function ScorePopup(shenviRef) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(
-          'https://shenvi.xyz/api/score/getbyid/648f12c9a5657853a1cd70e5',
-        );
+        const response = await fetch(`$https://shenvi.xyz/api/score/getbyid/{shenviRef}`);
         const data = await response.json();
         setData(data);
       } catch (error) {
