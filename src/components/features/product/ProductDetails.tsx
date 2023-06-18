@@ -11,6 +11,7 @@ import MyComponent from './MyComponent';
 
 export const ProductDetails = ({
   name,
+  shenviRef,
   price,
   description,
   featuredProductImage,
@@ -73,7 +74,7 @@ export const ProductDetails = ({
               <QuantitySelector />
             </Box>
           </Box>
-          <ScoreDetails />
+          <ScoreDetails value={shenviRef} />
           <MyComponent />
         </GridItem>
       </Grid>

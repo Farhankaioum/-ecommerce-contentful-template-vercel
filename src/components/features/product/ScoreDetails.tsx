@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 
 import { SustainableProductModel } from '../models/SustainableProductModel';
 
-function ScoreDetails() {
+function ScoreDetails(shenviRef) {
+  console.log('detail shenviRef: ', shenviRef);
   function convertScore(score) {
     const minScore = 0;
     const maxScore = 1;
@@ -24,10 +25,10 @@ function ScoreDetails() {
   const [data, setData] = useState<SustainableProductModel | null>(null);
   useEffect(() => {
     const fetchUser = async () => {
+      const baseUrl = 'https://shenvi.xyz/api/score/getbyid/';
+      const url = `${baseUrl}${shenviRef.value}`;
       try {
-        const response = await fetch(
-          'https://shenvi.xyz/api/score/getbyid/648f12c9a5657853a1cd70e5',
-        );
+        const response = await fetch(url);
         const data = await response.json();
         setData(data);
       } catch (error) {
