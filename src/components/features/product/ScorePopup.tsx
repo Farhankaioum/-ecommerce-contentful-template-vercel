@@ -17,7 +17,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { SustainableProductModel } from '../models/SustainableProductModel';
 
 function ScorePopup(shenviRef) {
-  console.log('shenviRef ', shenviRef);
+  console.log('shenviRef ', shenviRef.value);
   const [isOpen, setIsOpen] = useState(false);
 
   const openPopup = () => {
@@ -49,7 +49,7 @@ function ScorePopup(shenviRef) {
   useEffect(() => {
     const fetchUser = async () => {
       const baseUrl = 'https://shenvi.xyz/api/score/getbyid/';
-      const url = `${baseUrl}${shenviRef}`;
+      const url = `${baseUrl}${shenviRef.value}`;
       try {
         const response = await fetch(url);
         const data = await response.json();
