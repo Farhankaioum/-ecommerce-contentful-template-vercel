@@ -20,6 +20,7 @@ function ScorePopup(shenviRef) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openPopup = () => {
+    console.log('shenviRef ', shenviRef);
     setIsOpen(true);
   };
 
@@ -47,8 +48,10 @@ function ScorePopup(shenviRef) {
   const [data, setData] = useState<SustainableProductModel | null>(null);
   useEffect(() => {
     const fetchUser = async () => {
+      const baseUrl = 'https://shenvi.xyz/api/score/getbyid/';
+      const url = `${baseUrl}${shenviRef}`;
       try {
-        const response = await fetch(`$https://shenvi.xyz/api/score/getbyid/{shenviRef}`);
+        const response = await fetch(url);
         const data = await response.json();
         setData(data);
       } catch (error) {
