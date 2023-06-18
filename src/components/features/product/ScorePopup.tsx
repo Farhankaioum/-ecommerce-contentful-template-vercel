@@ -113,7 +113,7 @@ function ScorePopup(shenviRef) {
                 <Text marginRight={4} fontWeight={800}>
                   Environment Friendliness:
                 </Text>
-                <Text> {Math.floor(parseFloat(data.sustainabilityMetrics.totalCarbon))}</Text>
+                <Text> {convertScore(parseFloat(data.sustainabilityMetrics.score))}</Text>
               </Flex>
               <Flex>
                 <Text marginRight={4} fontWeight={800}>
