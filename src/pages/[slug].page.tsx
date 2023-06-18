@@ -11,6 +11,7 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
   const product = useContentfulLiveUpdates(props.product);
+  console.log('product', product);
 
   return (
     <>
@@ -22,7 +23,8 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             base: 5,
             md: 9,
             lg: 16,
-          }}>
+          }}
+        >
           <ProductTileGrid
             title={t('product.relatedProducts')}
             products={product.relatedProductsCollection.items}
