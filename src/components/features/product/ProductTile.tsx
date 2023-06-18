@@ -13,6 +13,7 @@ export const ProductTile = ({
   price,
   score,
   slug,
+  shenviRef,
   sys: { id: entryId },
 }: PageProductFieldsFragment) => {
   const inspectorProps = useContentfulInspectorMode({ entryId });
@@ -41,7 +42,7 @@ export const ProductTile = ({
         )}
         <Box marginRight={12} padding={1.5} borderRadius="6px">
           <Box marginTop={2}>
-            <ScorePopup />
+            <ScorePopup value={shenviRef} />
           </Box>
         </Box>
       </Flex>

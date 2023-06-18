@@ -16,10 +16,11 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import { SustainableProductModel } from '../models/SustainableProductModel';
 
-function ScorePopup() {
+function ScorePopup(shenviRef) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openPopup = () => {
+    console.log('shenviRef ', shenviRef);
     setIsOpen(true);
   };
 
