@@ -9,6 +9,7 @@ interface ProductTileGridProps {
 }
 
 export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
+  console.log('products ', products);
   return (
     <Container>
       {title && (
@@ -19,7 +20,8 @@ export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
       <Grid
         templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
         rowGap={{ base: 6, lg: 6 }}
-        columnGap={{ base: 4, lg: 24 }}>
+        columnGap={{ base: 4, lg: 24 }}
+      >
         {products.map((product, index) => {
           return <GridItem key={index}>{product ? <ProductTile {...product} /> : null}</GridItem>;
         })}
