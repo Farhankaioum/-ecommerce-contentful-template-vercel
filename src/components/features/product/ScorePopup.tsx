@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Flex, Text, Image, Center } from '@chakra-ui/react';
 import {
   Button,
@@ -14,6 +14,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
+import { SustainableProductModel } from '../models/SustainableProductModel'
+
+
 function ScorePopup() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,9 +28,41 @@ function ScorePopup() {
     setIsOpen(false);
   };
 
+  function convertScore(score) {
+    const minScore = 0;
+    const maxScore = 1;
+    const minConverted = 1;
+    const maxConverted = 5;
+  
+    // Calculate the converted score
+    const convertedScore = ((score - minScore) / (maxScore - minScore)) * (maxConverted - minConverted) + minConverted;
+  
+    // Round the converted score to the nearest integer
+    const roundedScore = Math.round(convertedScore);
+  
+    return roundedScore;
+  }
+
+  // pages/index.tsx
+  const [data, setData] = useState<SustainableProductModel | null>(null);
+useEffect(() => {
+  const fetchUser = async () => {
+    try {
+      const response = await fetch('https://shenvi.xyz/api/score/getbyid/648eb05c74140dff1cc2227c');
+      var data = await response.json();
+      setData(data);
+    } catch (error) {
+      console.error('Error fetching user:', error);
+    }
+  };
+
+  fetchUser();
+}, []);
+
   return (
     <div>
-      <Button onClick={openPopup} paddingLeft={0} paddingRight={2}>
+      {data ?
+      (<Button onClick={openPopup} paddingLeft={0} paddingRight={2}>
         <Flex justifyContent="space-between" align={'center'} padding={0}>
           <Image
             src="/assets/logo.png"
@@ -38,14 +73,16 @@ function ScorePopup() {
             marginRight={4}
           />
           <Box display="grid" gridTemplateColumns="auto auto">
-            <Box>4.5</Box>
+            <Box>{convertScore(parseFloat(data.sustainabilityMetrics.score))}</Box>
             <Box width={5} marginLeft={2}>
               <FontAwesomeIcon color="gold" icon={faStar} />
             </Box>
           </Box>
         </Flex>
-      </Button>
+      </Button>)
+      : (<div> </div>)}
 
+      {data &&
       <Modal isOpen={isOpen} onClose={closePopup}>
         <ModalOverlay />
         <ModalContent>
@@ -61,7 +98,7 @@ function ScorePopup() {
                 borderRadius="6px"
               />
               <Text color={'green.200'} fontSize={30}>
-                4.5
+              {convertScore(parseFloat(data.sustainabilityMetrics.score))}
               </Text>
             </Flex>
           </ModalHeader>
@@ -71,13 +108,19 @@ function ScorePopup() {
               <Text marginRight={4} fontWeight={800}>
                 Environment Friendliness:
               </Text>
-              <Text> 4.8</Text>
+              <Text> {Math.floor(parseFloat(data.sustainabilityMetrics.totalCarbon))}</Text>
             </Flex>
             <Flex>
               <Text marginRight={4} fontWeight={800}>
                 Packaging:
               </Text>
-              <Text> 4.0</Text>
+              <Text> {convertScore(parseFloat(data.sustainabilityMetrics.packagingScore))}</Text>
+            </Flex>
+            <Flex>
+              <Text marginRight={4} fontWeight={800}>
+                Carbon Emmision:
+              </Text>
+              <Text> {Math.floor(parseFloat(data.sustainabilityMetrics.totalCarbon))}</Text>
             </Flex>
           </ModalBody>
           <ModalFooter>
@@ -86,7 +129,7 @@ function ScorePopup() {
             </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>}
     </div>
   );
 }
